@@ -22,10 +22,11 @@
   <a href="mailto:<?= $_SESSION['user']['email'] ?>"><?= $_SESSION['user']['email'] ?></a>
   <a href="vendor/logout.php" class="logout">Выход</a>
     <?php
-    if (isset($_SESSION['message'])) {
-        echo $_SESSION['message'];
-    }
-    unset($_SESSION['message']);
+      if (isset($_SESSION['message'])) {
+          foreach ($_SESSION['message'] as $msg)
+              echo $msg;
+      }
+      unset($_SESSION['message']);
     ?>
 </form>
 

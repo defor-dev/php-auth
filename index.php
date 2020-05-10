@@ -11,7 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="assets/css/main.css">
-  <title>Авторизация и регистрация</title>
+  <title>Авторизация</title>
 </head>
 <body>
 
@@ -26,12 +26,15 @@
     <p>
       У вас нет аккаунта? - <a href="register.php">Зарегистрируйтесь</a>
     </p>
+    <div class="msg">
       <?php
-      if (isset($_SESSION['message'])) {
-          echo $_SESSION['message'];
-      }
-      unset($_SESSION['message']);
-      ?>
+        if (isset($_SESSION['message'])) {
+          foreach ($_SESSION['message'] as $msg)
+            echo $msg;
+        }
+        unset($_SESSION['message']);
+        ?>
+    </div>
   </form>
 
 </body>

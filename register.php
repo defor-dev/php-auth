@@ -16,10 +16,11 @@
 <body>
 
   <!-- Форма регистрации -->
-  <!-- TODO: Сделать проверку полей, чтобы ФИО содержало три слова, логин был не меньше 3х символов, почта была корректной -->
+  <!-- TODO: Сделать проверку на наличие введённых данных(логин и почта) в БД => попросить ввести другие. -->
+  <!-- TODO: Браузер жалуется на небезопасность передачи пароля - исправить -->
 
   <form action="vendor/signup.php" method="post" enctype="multipart/form-data">
-    <label>ФИО</label>
+    <label>Имя Фамилия</label>
     <input type="text" name="full_name" value="<?= $_SESSION['fields']['full_name'] ?? '' ?>" placeholder="Введите полное имя">
     <label>Логин</label>
     <input type="text" name="login" value="<?= $_SESSION['fields']['login'] ?? '' ?>" placeholder="Введите логин">
@@ -36,12 +37,15 @@
     <p>
       У вас уже есть аккаунт? - <a href="index.php">Авторизируйтесь</a>
     </p>
+    <div class="msg">
       <?php
         if (isset($_SESSION['message'])) {
-          echo $_SESSION['message'];
+            foreach ($_SESSION['message'] as $msg)
+                echo $msg;
         }
         unset($_SESSION['message']);
       ?>
+    </div>
   </form>
 </body>
 </html>

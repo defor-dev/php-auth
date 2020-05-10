@@ -16,9 +16,9 @@ if ($login == $user['login'] && password_verify($password, $user['password'])) {
         'email' => $user['email']
     );
 
-    $_SESSION['message'] = '<p class="success">Вход прошёл успешно</p>';
+    $_SESSION['message'][] .= '<p class="success">Вход прошёл успешно</p>';
     header('Location: ../profile.php');
 } else {
-    $_SESSION['message'] = '<p class="error">Неверный логин или пароль</p>';
+    $_SESSION['message'][] .= '<p class="error">Неверный логин или пароль</p>';
     header('Location: ../index.php');
 }
